@@ -2,10 +2,12 @@
 
 namespace Modules\Member\Http\Controllers;
 
+use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use GroceryCrud\Core\GroceryCrud;
+use Illuminate\Support\Facades\Hash;
 
 class MemberController extends Controller
 {
@@ -34,7 +36,7 @@ class MemberController extends Controller
         return $crud;
     }
 
-    private function _show_output($output) {
+    private function _show_output($output, $title = '') {
         if ($output->isJSONResponse) {
             return response($output->output, 200)
                   ->header('Content-Type', 'application/json')
@@ -48,14 +50,16 @@ class MemberController extends Controller
         return view('grocery', [
             'output' => $output,
             'css_files' => $css_files,
-            'js_files' => $js_files
+            'js_files' => $js_files,
+            'title' => $title
         ]);
     }
 
     public function index()
     {
-        $crud = $this->_getGroceryCrudEnterprise();
+        $title = "Users";
 
+        $crud = $this->_getGroceryCrudEnterprise();
         $crud->setTable('users');
         $crud->setSkin('bootstrap-v4');
         $crud->setSubject('User', 'Users');
@@ -66,9 +70,19 @@ class MemberController extends Controller
         $crud->displayAs([
             'role_id' => 'Role'
         ]);
-
+        $crud->callbackAfterInsert(function ($s) {
+            $user = User::find($s->insertId);
+            $user->password = Hash::make($user->password);
+            $user->save();
+            return $s;
+        });
+        $crud->callbackAfterUpdate(function ($s) {
+            $user = User::find($s->primaryKeyValue);
+            $user->touch();
+            return $s;
+        });
         $output = $crud->render();
 
-        return $this->_show_output($output);
+        return $this->_show_output($output, $title);
     }
 }
