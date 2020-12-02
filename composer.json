@@ -12,12 +12,14 @@
         "devmarketer/easynav": "^1.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
+        "grocerycrud/enterprise": "2.*.*",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/fortify": "^1.6",
         "laravel/framework": "^8.0",
         "laravel/legacy-factories": "^1.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^3.0"
+        "laravel/ui": "^3.0",
+        "nwidart/laravel-modules": "^8.2"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
@@ -26,6 +28,12 @@
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.0"
     },
+    "repositories": [
+        {
+            "type": "artifact",
+            "url": "artifacts/"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
@@ -38,7 +46,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Modules\\": "Modules/"
         },
         "classmap": [
             "database/seeds",
