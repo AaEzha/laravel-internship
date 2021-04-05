@@ -1,6 +1,8 @@
 <?php
 
+use Database\Seeders\RoleSeeder;
 use Illuminate\Database\Seeder;
+use Modules\Member\Entities\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        Role::insert([
+            ['name' => 'Admin'],
+            ['name' => 'Member']
+        ]);
     }
 }
