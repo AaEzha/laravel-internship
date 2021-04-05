@@ -36,7 +36,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-dollar-sign"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">EZPay</div>
+            <div class="sidebar-brand-text mx-3">{{ config('app.name') }}</div>
         </a>
 
         <!-- Divider -->
