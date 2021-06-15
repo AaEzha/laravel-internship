@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         Role::insert([
             ['name' => 'Administrator'],
             ['name' => 'Member'],
+            ['name' => 'Perusahaan'],
         ]);
 
         User::insert([
