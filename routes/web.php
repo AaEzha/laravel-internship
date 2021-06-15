@@ -29,3 +29,16 @@ Route::get('/about', function () {
 Route::get('/blank', function () {
     return view('blank');
 })->name('blank');
+
+
+Route::middleware('auth','can:admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::get('/perusahaan', 'AdminController@perusahaan')->name('perusahaan');
+    Route::post('/perusahaan', 'AdminController@perusahaan');
+});
+
+Route::middleware('auth','can:perusahaan')->prefix('perusahaan')->name('perusahaan.')->group(function(){
+    Route::get('/pekerjaan', 'PerusahaanController@pekerjaan')->name('pekerjaan');
+    Route::post('/pekerjaan', 'PerusahaanController@pekerjaan');
+    Route::get('/profil', 'PerusahaanController@profil')->name('profil');
+    Route::put('/profil', 'PerusahaanController@profil_store')->name('profil_store');
+});

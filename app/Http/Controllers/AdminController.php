@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use Illuminate\Http\Request;
 use GroceryCrud\Core\GroceryCrud;
 
@@ -51,30 +52,34 @@ class AdminController extends Controller
         ]);
     }
 
-    public function index()
+    public function perusahaan()
     {
-        $title = "Users";
+        $title = "Perusahaan";
 
         $crud = $this->_getGroceryCrudEnterprise();
-        $crud->setTable('users');
+        $crud->setTable('companies');
         $crud->setSkin('bootstrap-v4');
-        $crud->setSubject('User', 'Users');
-        $crud->columns(['name', 'last_name', 'role_id', 'email', 'updated_at']);
-        $crud->addFields(['name', 'last_name', 'role_id', 'email', 'password']);
-        $crud->editFields(['name', 'last_name', 'role_id', 'email']);
-        $crud->setRelation('role_id', 'roles', 'name');
+        $crud->setSubject('Perusahaan', 'Perusahaan');
+        $crud->unsetColumns(['detail','address','phone','created_at', 'updated_at']);
+        $crud->unsetFields(['created_at', 'updated_at']);
+        $crud->requiredFields(['name','email','detail','address','phone','image']);
+        $crud->unsetEditFields(['user_id','created_at', 'updated_at']);
+        $crud->fieldType('email','email');
+        $crud->setRelation('user_id', 'users', '{name} {last_name}', ['role_id' => 3]);
+        $crud->setTexteditor(['detail']);
+        $crud->setFieldUpload('image', 'storage', '../storage');
         $crud->displayAs([
-            'role_id' => 'Role'
+            'user_id' => 'Pemilik'
         ]);
         $crud->callbackAfterInsert(function ($s) {
-            $user = User::find($s->insertId);
-            $user->password = Hash::make($user->password);
-            $user->save();
-            return $s;
-        });
-        $crud->callbackAfterUpdate(function ($s) {
-            $user = User::find($s->primaryKeyValue);
-            $user->touch();
+            $perusahaan = Company::find($s->insertId);
+            $user_id = $perusahaan->user_id;
+
+            // cek lebih dari 1 atau tidak
+            $cek = Company::where('user_id', $user_id)->count();
+            if($cek > 1) {
+                $perusahaan->delete();
+            }
             return $s;
         });
         $output = $crud->render();

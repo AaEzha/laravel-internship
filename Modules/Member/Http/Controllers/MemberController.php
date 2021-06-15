@@ -2,6 +2,7 @@
 
 namespace Modules\Member\Http\Controllers;
 
+use App\Company;
 use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -74,6 +75,13 @@ class MemberController extends Controller
             $user = User::find($s->insertId);
             $user->password = Hash::make($user->password);
             $user->save();
+
+            Company::create([
+                'user_id' => $user->id,
+                'name' => 'Unnamed Company',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
             return $s;
         });
         $crud->callbackAfterUpdate(function ($s) {

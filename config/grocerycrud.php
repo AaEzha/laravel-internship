@@ -6,7 +6,7 @@ return [
     // Dutch, English, French, German, Greek, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean,
     // Lithuanian, Mongolian, Norwegian, Persian, Polish, Portuguese, Brazilian Portuguese, Romanian,
     // Russian, Slovak, Spanish, Thai, Turkish, Ukrainian, Vietnamese
-    'default_language'  => 'English',
+    'default_language'  => 'Indonesian',
 
     // This is the assets folder where all the JavaScript, CSS, images and font files are located
     'assets_folder' => env('APP_URL') . '/assets/grocery-crud/',
@@ -55,7 +55,7 @@ return [
     // is "Actions" rather than "More"
     'max_action_buttons' => [
         'mobile' => 1,
-        'desktop' => 2
+        'desktop' => 3
     ],
 
     // The allowed file types on upload. If the file extension doesn't exist in the array

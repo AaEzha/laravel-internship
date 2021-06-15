@@ -20,7 +20,7 @@ class CreateJobsTable extends Migration
             $table->string('wilayah');
             $table->string('spesialisasi');
             $table->date('closed_at');
-            $table->bigInteger('gaji');
+            $table->string('gaji');
             $table->string('gaji_satuan');
             $table->text('detail');
             $table->string('image');
