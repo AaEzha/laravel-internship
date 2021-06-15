@@ -1,8 +1,11 @@
 <?php
+// namespace Database\Seeders;
 
+use App\Role;
+use App\User;
 use Database\Seeders\RoleSeeder;
+use Database\Seeders\UserSeeder;
 use Illuminate\Database\Seeder;
-use Modules\Member\Entities\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,8 +17,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Role::insert([
-            ['name' => 'Admin'],
-            ['name' => 'Member']
+            ['name' => 'Administrator'],
+            ['name' => 'Member'],
+        ]);
+
+        User::insert([
+            ['name' => 'Administrator', 'role_id' => 1, 'email' => 'admin@gmail.com', 'password' => bcrypt('password')],
+            ['name' => 'Member', 'role_id' => 2, 'email' => 'member@gmail.com', 'password' => bcrypt('password')],
         ]);
     }
 }
