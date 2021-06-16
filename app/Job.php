@@ -12,6 +12,10 @@ class Job extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'closed_at' => 'datetime:Y-m-d',
+    ];
+
     /**
      * Get the company that owns the Job
      *

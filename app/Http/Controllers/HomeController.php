@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Job;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -32,5 +33,11 @@ class HomeController extends Controller
         ];
 
         return view('home', compact('widget'));
+    }
+
+    public function lamaran(Job $job)
+    {
+        $title = $job->jenis;
+        return view('job', compact('job','title'));
     }
 }

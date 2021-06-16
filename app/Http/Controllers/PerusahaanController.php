@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Internship;
 use App\Job;
 use Illuminate\Http\Request;
 use GroceryCrud\Core\GroceryCrud;
@@ -79,6 +80,9 @@ class PerusahaanController extends Controller
             $data->touch();
             return $s;
         });
+        $crud->setActionButton('Pelamar', 'fa fa-users', function ($row) {
+            return route('perusahaan.pelamar', $row->id);
+        }, false);
         $output = $crud->render();
 
         return $this->_show_output($output, $title);
@@ -108,5 +112,49 @@ class PerusahaanController extends Controller
         );
 
         return redirect()->route('perusahaan.profil')->with('success', 'Profile berhasil diupdate');
+    }
+
+    public function pelamar(Job $job)
+    {
+        $title = "Daftar Pelamar";
+
+        $crud = $this->_getGroceryCrudEnterprise();
+        $crud->setTable('internships');
+        $crud->setSkin('bootstrap-v4');
+        $crud->setSubject('Daftar Pelamar', 'Daftar Pelamar');
+        $crud->unsetColumns(['created_at', 'updated_at']);
+        $crud->where(['job_id' => $job->id]);
+        $crud->unsetAdd();
+        $crud->setRelation('user_id', 'users', '{name} {last_name}', ['role_id' => 2])
+             ->setRelation('job_id', 'jobs', '{jenis} - {wilayah}')
+            ;
+        $crud->fieldType('status', 'dropdown_search', [
+            '0' => 'Pending',
+            '1' => 'Terima',
+            '2' => 'Tolak'
+        ]);
+        $crud->unsetFields(['created_at', 'updated_at']);
+        $crud->requiredFields(['user_id','job_id','status']);
+        $crud->displayAs([
+            'user_id' => 'Nama Pelamar',
+            'job_id' => 'Pekerjaan - Wilayah'
+        ]);
+        // $crud->setTexteditor(['detail']);
+        // $crud->setFieldUpload('image', 'storage', '../storage');
+        // $crud->where(['company_id' => auth()->user()->company->id]);
+        // $crud->callbackBeforeInsert(function ($s) {
+        //     $s->data['company_id'] = auth()->user()->company->id;
+        //     $s->data['created_at'] = now();
+        //     $s->data['updated_at'] = now();
+        //     return $s;
+        // });
+        $crud->callbackAfterUpdate(function ($s) {
+            $data = Internship::find($s->primaryKeyValue);
+            $data->touch();
+            return $s;
+        });
+        $output = $crud->render();
+
+        return $this->_show_output($output, $title);
     }
 }
