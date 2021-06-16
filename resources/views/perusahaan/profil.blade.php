@@ -95,7 +95,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="email">Email<span class="small text-danger">*</span></label>
-                                        <input type="email" id="email" class="form-control" name="email" placeholder="Last name" value="{{ old('email', $data->email) }}">
+                                        <input type="email" id="email" class="form-control" name="email" placeholder="Email" value="{{ old('email', $data->email) }}">
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="form-control-label" for="email">Company Detail<span class="small text-danger">*</span></label>
-                                        <input type="text" id="detail" class="form-control" name="detail" placeholder="example@example.com" value="{{ old('detail', $data->detail) }}">
+                                        <input type="text" id="detail" class="form-control" name="detail" placeholder="Information about company" value="{{ old('detail', $data->detail) }}">
                                     </div>
                                 </div>
                             </div>

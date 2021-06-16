@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::name('auth.')->prefix('auth')->group(function(){
+    Route::get('login', 'AuthController@index')->name('login');
+});
+
+Route::get('/', 'FrontController@index')->name('front');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');

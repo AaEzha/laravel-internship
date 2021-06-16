@@ -1,0 +1,215 @@
+#title{
+    font-size: 3vw;
+    position: relative;
+    bottom: -10px;
+    color: black;
+    font-weight:bold;
+}
+
+#nav1{
+    font-size: 1.5vw;
+    position: relative;
+    right: -200%;
+    top: -20px;
+    color: black;
+    font-weight:bold;
+}
+
+#nav2{
+    font-size: 1.5vw;
+    position: relative;
+    right: -230%;
+    top: -20px;
+    color: black;
+    font-weight:bold;
+}
+
+#nav3{
+    font-size: 1vw;
+    position: relative;
+    right: -400%;
+    top: -20px;
+    color: black;
+    font-weight:bold;
+}
+
+table, th, td {
+    border: 1px solid black;
+    width: 5%;
+}
+
+body{
+        background: -webkit-linear-gradient(left, #ad9bf3, #35c6ee);
+}
+
+.profile-layout .profile-section .main-name,.profile-layout .profile-section .email-info{
+    text-align:center;
+    margin:0;
+}
+.profile-layout{
+    min-height:200px;
+    border:1px solid #dadada;
+}
+.profile-layout .profile-section .main-name{
+    margin-top:10px;
+    margin-bottom:10px;
+    font-family: 'Cinzel', serif;
+}
+.profile-layout .profile-img-section{
+    height:300px;
+position:relative;
+padding:20px 10px 20px 10px !important;
+background: linear-gradient(to right, #7c9efc, #2270e6);
+
+
+}
+.profile-layout .profile-img-section .profile-img{
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+width:200px;
+height:200px;
+}
+.profile-layout .profile-img{
+    
+    top:0;
+
+    border-radius:50%;
+    overflow:hidden;
+    margin:0 auto;
+}
+
+.profile-layout .profile-section .text-information .email-info{
+    color:#909090;
+    margin-bottom:15px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size:16px;
+}
+.profile-section .tab-section .nav-tabs{
+    border-bottom:1px solid #428BCA;
+    border-top:1px solid #428bca;
+} 
+.profile-section .tab-section .tab-content,.profile-layout .profile-img-section,.profile-layout .profile-section .text-information {
+    padding:20px 10px;
+}
+.profile-section .tab-section .nav-tabs>li{
+    margin-bottom:0px;
+}
+.profile-section .tab-section .nav-tabs>li>a{
+    padding: 15px 20px;
+}
+
+.profile-section .tab-section .nav-tabs>li.active>a{
+    border:1px solid #428bca;
+    background:#428bca;
+    color:#fff;
+    border-radius:0px;
+}
+
+.profile-section .tab-section .tab-pane .form-control{
+    height:45px;
+    border-radius:0;
+}
+.profile-section  .tab-pane>.form-group:last-of-types{
+    margin-bottom:0px;
+}
+.profile-section .btn-submit{
+        height: 40px;
+    line-height: 28px;
+    border-radius: 2px;
+    
+}
+.profile-section span.input-group-addon{
+    min-width:50px;
+}
+.profile-section span.input-group-addon .fa-lg{
+    font-size:20px;
+}
+.no-edit-forms input.form-control{
+    background:#eee;
+    box-shadow:none;
+    pointer-events:none;
+}
+.profile-section .friend-list .media>a,.profile-section .friend-list .media>a:hover{
+    text-decoration:none;
+}
+
+.profile-section .friend-list .media-left .media-object{
+    height:auto;
+}
+.profile-section .friend-list .media-heading{
+    color:#464646;
+    line-height: 20px;
+}
+
+.modal-edit {
+    color: #636363;
+    width: 350px;
+}
+.modal-edit .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+}
+.modal-edit .modal-header {
+    border-bottom: none;
+    position: relative;
+    justify-content: center;
+}
+.modal-edit h4 {
+    text-align: center;
+    font-size: 26px;
+}
+.modal-edit  .form-group {
+    position: relative;
+}
+.modal-edit i {
+    position: absolute;
+    left: 13px;
+    top: 11px;
+    font-size: 18px;
+}
+.modal-edit .form-control {
+    padding-left: 40px;
+}
+.modal-edit .form-control:focus {
+    border-color: #00ce81;
+}
+.modal-edit .form-control, .modal-edit .btn {
+    min-height: 40px;
+    border-radius: 3px; 
+}
+.modal-edit .hint-text {
+    text-align: center;
+    padding-top: 10px;
+}
+.modal-edit .close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+.modal-edit .btn, .modal-edit .btn:active {	
+    border: none;
+    background: #00ce81 !important;
+    line-height: normal;
+}
+.modal-edit .btn:hover, .modal-edit .btn:focus {
+    background: #00bf78 !important;
+}
+.modal-edit .modal-footer {
+    background: #ecf0f1;
+    border-color: #dee4e7;
+    text-align: center;
+    margin: 0 -20px -20px;
+    border-radius: 5px;
+    font-size: 13px;
+    justify-content: center;
+}
+.modal-edit .modal-footer a {
+    color: #999;
+}
+
+#modal-body-regist{
+    width: 500px;
+}
