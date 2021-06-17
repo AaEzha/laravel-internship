@@ -18,6 +18,8 @@ Route::name('auth.')->prefix('auth')->group(function(){
 });
 
 Route::get('/', 'FrontController@index')->name('front');
+Route::get('/lowongan', 'FrontController@lowongan')->name('lowongan');
+Route::post('/lowongan', 'FrontController@store')->middleware('auth')->name('lowongan.store');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -41,6 +43,10 @@ Route::middleware('auth','can:perusahaan')->prefix('perusahaan')->name('perusaha
 Route::middleware('auth','can:member')->prefix('pelamar')->name('pelamar.')->group(function(){
     Route::get('/lamaranku', 'PelamarController@lamaranku')->name('lamaranku');
     Route::post('/lamaranku', 'PelamarController@lamaranku');
+    Route::get('/skills', 'PelamarController@skills')->name('skills');
+    Route::post('/skills', 'PelamarController@skills');
+    Route::get('/links', 'PelamarController@links')->name('links');
+    Route::post('/links', 'PelamarController@links');
 });
 
 Route::middleware('auth')->name('dashboard.')->group(function(){

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Internship;
+use App\Skill;
+use App\WorkLink;
 use Illuminate\Http\Request;
 use GroceryCrud\Core\GroceryCrud;
 
@@ -82,6 +84,61 @@ class PelamarController extends Controller
             $i = Internship::find($row->id);
             return route('dashboard.detail_pekerjaan', $i->job->id);
         }, false);
+        $output = $crud->render();
+
+        return $this->_show_output($output, $title);
+    }
+
+    public function skills()
+    {
+        $title = "Skills";
+
+        $crud = $this->_getGroceryCrudEnterprise();
+        $crud->setTable('skills');
+        $crud->setSkin('bootstrap-v4');
+        $crud->setSubject('Skill', 'Skills');
+        $crud->where(['user_id' => auth()->user()->id]);
+        $crud->columns(['item']);
+        $crud->fields(['item']);
+        $crud->callbackBeforeInsert(function ($s) {
+            $s->data['created_at'] = now();
+            $s->data['updated_at'] = now();
+            $s->data['user_id'] = auth()->user()->id;
+            return $s;
+        });
+        $crud->callbackAfterUpdate(function ($s) {
+            $data = Skill::find($s->primaryKeyValue);
+            $data->touch();
+            return $s;
+        });
+        $output = $crud->render();
+
+        return $this->_show_output($output, $title);
+    }
+
+    public function links()
+    {
+        $title = "Links";
+
+        $crud = $this->_getGroceryCrudEnterprise();
+        $crud->setTable('work_links');
+        $crud->setSkin('bootstrap-v4');
+        $crud->setSubject('Link', 'Links');
+        $crud->where(['user_id' => auth()->user()->id]);
+        $crud->columns(['item']);
+        $crud->fields(['item']);
+        $crud->fieldType('item', 'url');
+        $crud->callbackBeforeInsert(function ($s) {
+            $s->data['created_at'] = now();
+            $s->data['updated_at'] = now();
+            $s->data['user_id'] = auth()->user()->id;
+            return $s;
+        });
+        $crud->callbackAfterUpdate(function ($s) {
+            $data = WorkLink::find($s->primaryKeyValue);
+            $data->touch();
+            return $s;
+        });
         $output = $crud->render();
 
         return $this->_show_output($output, $title);

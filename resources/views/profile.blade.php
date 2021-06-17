@@ -33,26 +33,25 @@
                         </div>
                     </div>
 
-                    {{-- <div class="row">
-                        <div class="col-md-4">
-                            <div class="card-profile-stats">
-                                <span class="heading">22</span>
-                                <span class="description">Friends</span>
+                </div>
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="text-center">
+                                <a href="{{ route('pelamar.skills') }}" class="btn btn-block btn-primary"><i class="fas fa-edit"></i> Skills</a>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card-profile-stats">
-                                <span class="heading">10</span>
-                                <span class="description">Photos</span>
+                        <div class="col-md-6">
+                            <div class="text-center">
+                                <a href="{{ route('pelamar.links') }}" class="btn btn-block btn-primary"><i class="fas fa-edit"></i> Links</a>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card-profile-stats">
-                                <span class="heading">89</span>
-                                <span class="description">Comments</span>
-                            </div>
-                        </div>
-                    </div> --}}
+                    </div>
+
                 </div>
             </div>
 
@@ -126,7 +125,7 @@
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col text-center">
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    <button type="submit" class="btn btn-success">Save Changes</button>
                                 </div>
                             </div>
                         </div>

@@ -24,7 +24,16 @@
 #nav3{
     font-size: 1.5vw;
     position: relative;
-    right: -900%;
+    right: -700%;
+    bottom:-15%;
+    color: black;
+    font-weight:bold;
+}
+
+#nav4{
+    font-size: 1.5vw;
+    position: relative;
+    right: -450%;
     bottom:-15%;
     color: black;
     font-weight:bold;
@@ -132,7 +141,7 @@
 }
 .modal-login .form-control, .modal-login .btn {
     min-height: 40px;
-    border-radius: 3px; 
+    border-radius: 3px;
 }
 .modal-login .hint-text {
     text-align: center;
@@ -143,7 +152,7 @@
     top: -5px;
     right: -5px;
 }
-.modal-login .btn, .modal-login .btn:active {	
+.modal-login .btn, .modal-login .btn:active {
     border: none;
     line-height: normal;
 }

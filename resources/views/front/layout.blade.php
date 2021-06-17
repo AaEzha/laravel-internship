@@ -15,7 +15,12 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+@if(Route::currentRouteName() == 'front')
 <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+@elseif (Route::currentRouteName() == 'lowongan')
+<link href="{{ asset('css/cari_lowongan.css') }}" rel="stylesheet">
+@endif
+
 
 @stack('css')
 
@@ -32,14 +37,21 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" id="nav1" href="#">Cari Lowongan</a>
+          <a class="nav-link active" id="nav1" href="{{ route('lowongan') }}">Cari Lowongan</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="nav2" href="#">Cari Perusahaan</a>
+          <a class="nav-link" id="nav2" href="{{ route('lowongan') }}">Cari Perusahaan</a>
         </li>
         @guest
         <li class="nav-item">
           <a href="#ModalLogin" class="nav-link active trigger-btn" data-toggle="modal" id="nav3">Login</a>
+        </li>
+        @else
+        <li class="nav-item">
+            <a href="{{ route('home') }}" class="nav-link active trigger-btn" id="nav4">Dashboard</a>
+          </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link active trigger-btn" data-toggle="modal" data-target="#logoutModal" id="nav3">Logout</a>
         </li>
         @endguest
       </ul>
@@ -208,6 +220,27 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-link" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger" href="http://localhost:8000/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <form id="logout-form" action="http://localhost:8000/logout" method="POST" style="display: none;">
+                    <input type="hidden" name="_token" value="NLnYr82fypheqfOw93kAhqsCxkRqr9DuVo0q42Wr">                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 @stack('js')

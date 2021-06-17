@@ -73,12 +73,19 @@
         <li class="nav-item {{ Nav::isRoute('profile') }}">
             <a class="nav-link" href="{{ route('profile') }}">
                 <i class="fas fa-fw fa-user"></i>
-                <span>{{ __('Profile') }}</span>
+                <span>{{ __('Ubah Profile') }}</span>
             </a>
         </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
+
+        <li class="nav-item {{ Nav::isRoute('front') }}">
+            <a class="nav-link" href="{{ route('front') }}">
+                <i class="fas fa-fw fa-arrow-right"></i>
+                <span>{{ __('Halaman Depan') }}</span>
+            </a>
+        </li>
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
